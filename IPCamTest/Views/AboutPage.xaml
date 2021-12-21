@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IPCamTest.Views.AboutPage"
+             xmlns:vm="clr-namespace:IPCamTest.ViewModels"
+             Title="{Binding Title}"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <xct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+        <!--<Converters:BytesToImageSourceConverter x:Key="BytesToImageSourceConverter"/>-->
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Image Source="{Binding Frame, Converter={StaticResource ByteArrayToImageSourceConverter}}" x:Name="streamImage" BackgroundColor="DarkGray" WidthRequest="640" HeightRequest="480"/>
+    </StackLayout>
+
+</ContentPage>
